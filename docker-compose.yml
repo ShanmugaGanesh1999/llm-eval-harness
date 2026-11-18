@@ -1,0 +1,18 @@
+name: p5-eval-harness
+
+services:
+  eval-runner:
+    build: .
+    image: p5-eval-runner
+    # One-shot job: no host port. Exit code is the release-gate verdict (0 pass, 1 gate fail, 2 data error).
+    environment:
+      EVAL_MODE: ${EVAL_MODE:-offline}
+      EVAL_GOLD: ${EVAL_GOLD:-data/gold/v2/gold.jsonl}
+      EVAL_PRED: ${EVAL_PRED:-data/predictions/baseline.jsonl}
+      EVAL_OUT: ${EVAL_OUT:-reports/eval_report.json}
+      RAG_API_URL: ${RAG_API_URL:-http://rag-api:8000}
+      SQL_API_URL: ${SQL_API_URL:-http://sql-api:8000}
+      AGENT_API_URL: ${AGENT_API_URL:-http://agent-api:8000}
+    volumes:
+      - ./reports:/app/reports
+    restart: "no"

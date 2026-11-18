@@ -1,0 +1,16 @@
+{
+  "dataset_version": "v2",
+  "created": "2026-11-18",
+  "files": {
+    "gold.jsonl": {
+      "sha256": "4427daff264fa4e975581443a987271afe54712f065516a0a2e085f4633c6706",
+      "cases": 28
+    }
+  },
+  "cases_by_task": {
+    "agent": 5,
+    "rag": 16,
+    "sql": 7
+  },
+  "note": "Any edit to a gold file requires a new dataset version directory."
+}
